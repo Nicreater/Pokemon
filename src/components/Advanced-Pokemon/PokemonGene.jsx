@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Card from "../Card";
-import Navi from "./nav";
+import Navi from "./Nav";
 import pokeball from "../../assets/pokeball.mp4";
 import pic from "../../assets/pic.png";
 
