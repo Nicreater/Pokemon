@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+@theme {
+  --animate-slide: slide 200s linear infinite;
+  --animate-grow: grow 2s ease-in-out;
+
+  @keyframes slide {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  @keyframes grow {
+    0% { transform: translate(-50%, -50%) scale(0); }
+    100% { transform: translate(-50%, -50%) scale(1); }
+  }
+}
+@keyframes fadeout {
+  0% { opacity: 1; }
+  70% { opacity: 1; }
+  100% { opacity: 0; }
+}
+.animate-fadeout {
+  animation: fadeout 0.8s ease-out forwards;
+}
