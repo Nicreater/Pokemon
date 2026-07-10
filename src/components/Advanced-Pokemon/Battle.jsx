@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef} from "react";
+import { useEffect, useState, useRef } from "react";
 import Navi from "./Nav";
 import battleground from "../../assets/battleground.jpg";
 import Card from "../Card";
@@ -16,7 +16,7 @@ import water from "../../assets/water.gif"
 import fairy from "../../assets/fairy.gif"
 import ice from "../../assets/ice.gif"
 import ground from "../../assets/ground.gif"
-import grass  from "../../assets/grass.gif" 
+import grass from "../../assets/grass.gif"
 import normal from "../../assets/normal.gif"
 import steel from "../../assets/steel.gif"
 import psychic from "../../assets/psychic.gif"
@@ -48,9 +48,9 @@ export default function Battle() {
   const [status1, setStatus1] = useState(null)
   const [status2, setStatus2] = useState(null)
   const [battleEnded, setBattleEnded] = useState(false)
-  const [activeEffect,  SetActiveEffect] = useState(null)
-    const effectTimeRef = useRef(null)
-  
+  const [activeEffect, SetActiveEffect] = useState(null)
+  const effectTimeRef = useRef(null)
+
 
 
   useEffect(() => {
@@ -216,64 +216,64 @@ export default function Battle() {
 
       setTurn(1)
     }
-    SetActiveEffect({type: moveType, target: attackNum === 1 ? 2 : 1})
-}
+    SetActiveEffect({ type: moveType, target: attackNum === 1 ? 2 : 1 })
+  }
 
 
-const typeEffects = {
-      dark : dark,
-      fire : fire,
-      water : water,
-      ghost : ghost,
-      ground: ground,
-      ice:ice,
-      normal:normal,
-      rock:rock,
-      grass:grass,
-      fairy:fairy,
-      psychic:psychic,
-      steel:steel,
-      flying: flying,
-      bug:bug
+  const typeEffects = {
+    dark: dark,
+    fire: fire,
+    water: water,
+    ghost: ghost,
+    ground: ground,
+    ice: ice,
+    normal: normal,
+    rock: rock,
+    grass: grass,
+    fairy: fairy,
+    psychic: psychic,
+    steel: steel,
+    flying: flying,
+    bug: bug
 
-    }
+  }
 
   const resetBattle = () => {
-      setBattleStarted(false)
-      setBattleEnded(false)
-      setReady1(false)
-      setReady2(false)
-      setChosen1(null)
-      setChosen2(null)
-      setHp1(null)
-      setHp2(null)
-      setmaxhp1(null)
-      setMaxhp2(null)
-      setStatus1(null)
-      setStatus2(null)
-      setTurn(1)
-      setLog("")
-      localStorage.removeItem("PLAYER-1")
-      localStorage.removeItem("PLAYER-2")
-      localStorage.removeItem("PLAYER-1-INDEX")
-      localStorage.removeItem("PLAYER-2-INDEX")
-    }
-    const replayBattle = () => {
-      setBattleStarted(false)
-      setBattleEnded(false)
-      setTurn(1)
-      setLog("")
-      setStatus1(null)
-      setStatus2(null)
-      const hp1val = chosen1?.stats.find(s => s.stat.name === "hp")?.base_stat
-      const hp2val = chosen2?.stats.find(s => s.stat.name === "hp")?.base_stat
-      setHp1(hp1val)
-      setHp2(hp2val)
-    }
+    setBattleStarted(false)
+    setBattleEnded(false)
+    setReady1(false)
+    setReady2(false)
+    setChosen1(null)
+    setChosen2(null)
+    setHp1(null)
+    setHp2(null)
+    setmaxhp1(null)
+    setMaxhp2(null)
+    setStatus1(null)
+    setStatus2(null)
+    setTurn(1)
+    setLog("")
+    localStorage.removeItem("PLAYER-1")
+    localStorage.removeItem("PLAYER-2")
+    localStorage.removeItem("PLAYER-1-INDEX")
+    localStorage.removeItem("PLAYER-2-INDEX")
+  }
+  const replayBattle = () => {
+    setBattleStarted(false)
+    setBattleEnded(false)
+    setTurn(1)
+    setLog("")
+    setStatus1(null)
+    setStatus2(null)
+    const hp1val = chosen1?.stats.find(s => s.stat.name === "hp")?.base_stat
+    const hp2val = chosen2?.stats.find(s => s.stat.name === "hp")?.base_stat
+    setHp1(hp1val)
+    setHp2(hp2val)
+  }
 
   console.log(hp1)
   console.log("chosen 1 moves: ", chosen1?.moves)
- 
+
 
   return (
     <div className="w-screen h-screen">
@@ -299,12 +299,12 @@ const typeEffects = {
 
           <div className="relative h-[90%] w-[90%] bg-no-repeat bg-cover bg-center overflow-hidden rounded-2xl bg-[url(https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/seasons/season15/season15_ep42_ss01.jpg)]">
             <div>
-              {chosen1 && chosenIndexes &&(
+              {chosen1 && chosenIndexes && (
                 <>
                   <img
                     className="absolute z-20 bottom-1/5 left-1/4 w-[10%] h-[10%] -scale-x-100 "
                     onError={(e) =>
-                      (e.target.src =`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${chosenIndexes.chosenOne + 1}.png`)
+                      (e.target.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${chosenIndexes.chosenOne + 1}.png`)
                     }
                     src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${chosenIndexes.chosenOne + 1}.gif`}
                   />
@@ -374,20 +374,20 @@ const typeEffects = {
                       </button>
                     )
                     }
-                    {activeEffect?.target ===2 && (
+                    {activeEffect?.target === 2 && (
                       <img
-                      src={typeEffects[activeEffect.type]}
-                      className="absolute inset-0  w-full h-full object-cover pointer-events-none animate-fadeout z-10"
-                        
+                        src={typeEffects[activeEffect.type]}
+                        className="absolute inset-0  w-full h-full object-cover pointer-events-none animate-fadeout z-10"
+
 
                       />
                     )
                     }
-                    {activeEffect?.target ===1 && (
+                    {activeEffect?.target === 1 && (
                       <img
-                      src={typeEffects[activeEffect.type]}
-                      className="absolute inset-0 w-full h-full object-cover pointer-events-none animate-fadeout z-10"
-                      
+                        src={typeEffects[activeEffect.type]}
+                        className="absolute inset-0 w-full h-full object-cover pointer-events-none animate-fadeout z-10"
+
 
                       />
 
@@ -450,12 +450,18 @@ const typeEffects = {
           </button>
 
           {show && (
-            <div className="absolute top-1/2 left-1/2 -translate-1/2">
-              <div className="p-6 space-y-4 bg-red-500/40 backdrop-blur-lg rounded-4xl">
-                <h2 className="text-3xl text-white font-bold text-center">
-                  Choose Your pokemon
-                </h2>
-                <div className="flex flex-col items-center justify-center w-full gap-4  ">
+            <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm">
+              <div className="relative w-full max-w-7xl max-h-[90vh] overflow-hidden rounded-3xl bg-red-500/40 p-6 backdrop-blur-lg">
+                <div className="mb-4 flex items-center justify-between">
+                  <h2 className="text-3xl text-white font-bold text-center">
+                    Choose Your pokemon
+                  </h2>
+                  <button type="button" onClick={() => setShow(false)}>
+                    <IoCloseCircleSharp className="fill-white size-8" />
+                  </button>
+                </div>
+
+                <div className="flex flex-col items-center justify-center w-full gap-4">
                   <input
                     type="text"
                     className="bg-white py-3 text-red-500 outline-none pl-4 font-semibold w-full rounded-xl"
@@ -465,14 +471,8 @@ const typeEffects = {
                   />
                 </div>
 
-                <div className="absolute top-4 right-4">
-                  <button type="button" onClick={() => setShow(false)}>
-                    <IoCloseCircleSharp className="fill-white size-8" />
-                  </button>
-                </div>
-
                 <div className="w-full">
-                  <div className="text-xl mt-4 flex gap-3">
+                  <div className="text-xl mt-4 flex flex-wrap gap-3">
                     <Button
                       className="bg-red-200 text-red-500 px-10 py-2 rounded-2xl"
                       name="🔥Fire"
@@ -520,15 +520,13 @@ const typeEffects = {
                   </div>
                 </div>
 
-                <div className="h-96 overflow-y-auto">
+                <div className="h-[60vh] overflow-y-auto mt-4">
                   <div className="grid grid-cols-5 justify-center items-center gap-4 pr-2">
                     {filtered
                       .filter((p) => p && p.types)
                       .map((p, i) => (
                         <Card
-                          filter={() =>
-                            showing(p)
-                          }
+                          filter={() => showing(p)}
                           key={i}
                           name={p.name}
                           imgSize="w-20 h-18"
@@ -551,7 +549,7 @@ const typeEffects = {
                               {i + 1}) {s.stat.name}: {s.base_stat}{" "}
                             </span>
                           ))}
-                          move={selected.moves.splice(0, 4).map((m, i) => (
+                          move={selected.moves.slice(0, 4).map((m, i) => (
                             <span key={i}>
                               {i + 1}) {m.move.name}
                             </span>

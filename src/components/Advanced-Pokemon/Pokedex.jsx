@@ -1,7 +1,6 @@
 import Navi from "./Nav";
 import Card from "../Card";
 import { useEffect, useState } from "react";
-import Index from ".";
 import { useSearchParams } from "react-router-dom";
 import Load from "../../assets/Load.gif"
 import { OrbitProgress } from "react-loading-indicators";
